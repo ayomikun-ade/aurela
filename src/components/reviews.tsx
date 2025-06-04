@@ -46,7 +46,7 @@ export default function Reviews() {
         See the Auréla difference through their eyes
       </p>
 
-      <div className="flex justify-between gap-4 mt-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
         {reviews.map((review) => (
           <div
             key={review.id}

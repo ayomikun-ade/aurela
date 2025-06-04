@@ -4,9 +4,9 @@ import hero from "@/assets/hero.png";
 
 export default function Hero() {
   return (
-    <section className="bg-[#F4C2C21A] text-tertiary py-12 px-6">
-      <section className="max-w-[1220px] mx-auto flex gap-28">
-        <div className="w-1/2 flex flex-col gap-6 justify-center ">
+    <section className="bg-[#F4C2C21A] text-tertiary py-12 md:px-6">
+      <section className="max-w-[1220px] mx-auto flex max-md:flex-col max-md:items-center gap-6 md:gap-28">
+        <div className="md:w-1/2 flex flex-col gap-6 justify-center max-md:px-5">
           <h1 className="font-playfair font-bold text-[52px]">
             Radiance, Redefined
           </h1>
@@ -23,7 +23,7 @@ export default function Hero() {
             </button>
           </div>
         </div>
-        <figure className="w-1/2">
+        <figure className="md:w-1/2">
           <Image src={hero} width={516} height={573} alt="Hero image" />
         </figure>
       </section>

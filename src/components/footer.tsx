@@ -3,8 +3,8 @@ import React from "react";
 export default function Footer() {
   return (
     <footer className="bg-secondary text-tertiary font-quicksand px-6 md:px-10 py-16">
-      <section className="max-w-[1360px] mx-auto flex flex-col gap-36">
-        <div className="flex justify-between">
+      <section className="max-w-[1360px] mx-auto flex flex-col gap-5 md:gap-36">
+        <div className="flex max-sm:flex-col max-sm:gap-4 justify-between">
           <div className="flex flex-col gap-6">
             <h4 className="font-playfair text-primary italic font-medium text-[32px]">
               Auréla
@@ -44,7 +44,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="flex justify-between">
+        <div className="flex max-md:flex-col-reverse items-center justify-between">
           <p>&copy; 2025 AURÉLA. Beauty, perfected.</p>
           <p>Privacy Terms Accessibility</p>
           <p></p>

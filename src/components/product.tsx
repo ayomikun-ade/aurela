@@ -40,14 +40,14 @@ export default function Product() {
   return (
     <section className="bg-primary font-quicksand text-tertiary px-10 py-16 ">
       <div className="max-w-[1200px] mx-auto flex flex-col items-center gap-6">
-        <h3 className="font-playfair text-white text-5xl font-bold">
+        <h3 className="font-playfair text-white text-center text-5xl font-bold">
           Your Beauty, Our Devotion
         </h3>
-        <p className="text-lg font-medium text-white">
+        <p className="text-lg font-medium text-white text-center">
           From the first cleanse to the final glow, Auréla brings elegance to
           every step of your skincare journey
         </p>
-        <div className="flex justify-between gap-4 mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
           {products.map((product) => (
             <div
               key={product.id}

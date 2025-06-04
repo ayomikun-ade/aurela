@@ -1,10 +1,11 @@
+import { Menu, Search, ShoppingCart } from "lucide-react";
 import React from "react";
 
 export default function Navbar() {
   return (
     <header className="text-primary font-quicksand flex justify-between items-center max-w-[1200px] h-[72px] px-6 mx-auto">
       <h2 className="font-playfair text-[32px] italic font-medium ">Auréla</h2>
-      <nav className="flex gap-32">
+      <nav className="flex gap-32 max-md:hidden">
         <ul className="flex gap-8 items-center font-semibold">
           <a href="#" className="cursor-pointer hover:opacity-65">
             Home
@@ -23,10 +24,13 @@ export default function Navbar() {
           </a>
         </ul>
 
-        <div className="flex gap-4 p-5">
-          <p>Cart</p>
-          <p>Search</p>
+        <div className="flex text-primary gap-4 p-5">
+          <ShoppingCart />
+          <Search />
         </div>
+      </nav>
+      <nav className="md:hidden">
+        <Menu className="text-primary" />
       </nav>
     </header>
   );
