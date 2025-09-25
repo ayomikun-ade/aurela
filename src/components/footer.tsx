@@ -1,9 +1,16 @@
+"use client";
 import React from "react";
+import { motion } from "motion/react";
 
 export default function Footer() {
   return (
     <footer className="bg-secondary text-tertiary font-quicksand px-6 md:px-10 py-16">
-      <section className="max-w-[1360px] mx-auto flex flex-col gap-5 md:gap-36">
+      <motion.section
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
+        viewport={{ once: true, amount: 0.5 }}
+        className="max-w-[1360px] mx-auto flex flex-col gap-5 md:gap-36"
+      >
         <div className="flex max-sm:flex-col max-sm:gap-4 justify-between">
           <div className="flex flex-col gap-6">
             <h4 className="font-playfair text-primary italic font-medium text-[32px]">
@@ -49,7 +56,7 @@ export default function Footer() {
           <p>Privacy Terms Accessibility</p>
           <p></p>
         </div>
-      </section>
+      </motion.section>
     </footer>
   );
 }

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import quote from "@/assets/quote.svg";
 import john from "@/assets/john.png";
@@ -5,6 +6,7 @@ import sophie from "@/assets/sophie.png";
 import naomi from "@/assets/naomi.png";
 import jane from "@/assets/jane.png";
 import Image from "next/image";
+import { motion } from "motion/react";
 
 export default function Reviews() {
   const reviews = [
@@ -38,7 +40,12 @@ export default function Reviews() {
     },
   ];
   return (
-    <section className="max-w-[1200px] mx-auto font-quicksand text-tertiary px-10 py-16 flex flex-col items-center gap-6">
+    <motion.section
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
+      viewport={{ once: true, amount: 0.5 }}
+      className="max-w-[1200px] mx-auto font-quicksand text-tertiary px-10 py-16 flex flex-col items-center gap-6"
+    >
       <h3 className="font-playfair text-primary text-5xl font-bold">
         Beauty, Verified
       </h3>
@@ -46,9 +53,29 @@ export default function Reviews() {
         See the Auréla difference through their eyes
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.3 },
+          },
+        }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10"
+      >
         {reviews.map((review) => (
-          <div
+          <motion.div
+            variants={{
+              hidden: { y: 20, opacity: 0 },
+              visible: { y: 0, opacity: 1 },
+            }}
+            whileHover={{
+              y: -10,
+              transition: { duration: 0.5, ease: "easeInOut" },
+            }}
             key={review.id}
             className="p-6 rounded-[20px] flex flex-col gap-2 justify-between border border-primary"
           >
@@ -66,9 +93,9 @@ export default function Reviews() {
                 <span className="font-quicksand text-sm">{review.tag}</span>
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

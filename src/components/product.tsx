@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import serum from "@/assets/serum2.png";
 import parfum from "@/assets/parfum.png";
@@ -5,6 +6,7 @@ import balm from "@/assets/balm.png";
 import moisture from "@/assets/moisture.png";
 import Image from "next/image";
 import like from "@/assets/like.svg";
+import { easeOut, motion } from "motion/react";
 
 export default function Product() {
   const products = [
@@ -37,9 +39,35 @@ export default function Product() {
       price: "16,000",
     },
   ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+        easeOut,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 100, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
   return (
     <section className="bg-primary font-quicksand text-tertiary px-10 py-16 ">
-      <div className="max-w-[1200px] mx-auto flex flex-col items-center gap-6">
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
+        viewport={{ once: true, amount: 0.5 }}
+        className="max-w-[1200px] mx-auto flex flex-col items-center gap-6"
+      >
         <h3 className="font-playfair text-white text-center text-5xl font-bold">
           Your Beauty, Our Devotion
         </h3>
@@ -47,10 +75,17 @@ export default function Product() {
           From the first cleanse to the final glow, Auréla brings elegance to
           every step of your skincare journey
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10"
+        >
           {products.map((product) => (
-            <div
+            <motion.div
               key={product.id}
+              variants={itemVariants}
               className="p-6 rounded-[5px] text-center bg-[#FEF9F9] flex flex-col gap-10 justify-between items-center"
             >
               <div className="flex items-end p-3">
@@ -74,13 +109,23 @@ export default function Product() {
                 {product.price}
               </p>
 
-              <button className="px-6 py-3 border border-primary rounded-[5px] text-primary hover:opacity-65 cursor-pointer">
+              <motion.button
+                whileHover={{
+                  rotate: [0, 8, -8, 8, 0],
+                  transition: {
+                    duration: 0.5,
+                    repeat: Infinity,
+                    repeatDelay: 0.8,
+                  },
+                }}
+                className="px-6 py-3 border border-primary rounded-[5px] text-primary hover:opacity-65 cursor-pointer"
+              >
                 Add to your cart
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
